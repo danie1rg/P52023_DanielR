@@ -24,7 +24,20 @@ namespace P52023_DanielR.Forms
 
         private void gestiónDeProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
+         
+        }
 
+        private void gestiónDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //control para que el formulario de gestión de usuarios se muestre
+            //sola una vez
+
+            if (!Globales.MiFormGestionUsuarios.Visible)
+            {
+                Globales.MiFormGestionUsuarios = new FrmUsuariosGestion();
+
+                Globales.MiFormGestionUsuarios.Show();
+            }
         }
     }
 }
