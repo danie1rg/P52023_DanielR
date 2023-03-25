@@ -49,6 +49,31 @@ namespace Logica.Models
             //se cambia el valor de R a true
             bool R = false;
 
+            Conexion MiCnn = new Conexion();
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@Cedula", this.UsuarioCedula));
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@Nombre", this.UsuarioNombre));
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@Telefono", this.UsuarioTelefono));
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@Correo", this.UsuarioCorreo));
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@Contrasennia", this.UsuarioContrasennia));
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@Direccion", this.UsuarioDireccion));
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@IDRol", this.MiRolTipo.UsuarioRolID));
+
+            int resultado = MiCnn.EjecutarInsertUpdateDelete("SPUsuariosAgregar");
+
+            if (resultado > 0) 
+            {
+                R = true;
+            }
+
+
+
             return R;
         }
 
@@ -116,13 +141,34 @@ namespace Logica.Models
         {
             bool R = false;
 
+            Conexion MiCnn = new Conexion();
+
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@cedula", this.UsuarioCedula));
+
+            DataTable consulta = new DataTable();
+            consulta = MiCnn.EjecutarSELECT("SPConsultarPorCedula");
+
+            if (consulta != null && consulta.Rows.Count > 0) {
+                R = true;
+            }
+
             return R;
         }
 
         public bool ConsultarPorEmail()
         {
             bool R = false;
+            Conexion MiCnn = new Conexion();
 
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@email", this.UsuarioCorreo));
+
+            DataTable consulta = new DataTable();
+            consulta = MiCnn.EjecutarSELECT("SPConsultarPorEmail");
+
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
             return R;
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -133,6 +134,163 @@ namespace P52023_DanielR.Forms
                 }
 
             }
+
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarForm();
+        }
+
+        private void LimpiarForm() {
+            TxtUsuarioCedula.Clear();
+            TxtUsuarioID.Clear();
+            TxtUsuarioNombre.Clear();
+            TxtUsuarioTelefono.Clear();
+            TxtUsuarioCorreo.Clear();
+            TxtUsuarioContrasennia.Clear();
+            CbRolesUsuario.SelectedIndex = -1;
+            TxtUsuarioDireccion.Clear();
+            
+        }
+
+        private bool ValidarDatosDigitados() 
+        {
+            bool r = false;
+
+            if (!string.IsNullOrEmpty(TxtUsuarioNombre.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtUsuarioCedula.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtUsuarioCorreo.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtUsuarioTelefono.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtUsuarioContrasennia.Text.Trim()) &&
+                CbRolesUsuario.SelectedIndex > -1
+                )
+            {
+                r = true;
+            
+            } else 
+            {
+                if (string.IsNullOrEmpty(TxtUsuarioNombre.Text.Trim())) 
+                {
+                    MessageBox.Show("Debe de digitar un nombre para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    TxtUsuarioNombre.Focus();
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(TxtUsuarioCedula.Text.Trim())) 
+                {
+                    MessageBox.Show("Debe de digitar una cédula para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    TxtUsuarioCedula.Focus();
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(TxtUsuarioCorreo.Text.Trim())) 
+                {
+                    MessageBox.Show("Debe de digitar un correo para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    TxtUsuarioCorreo.Focus();
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(TxtUsuarioTelefono.Text.Trim())) 
+                {
+                    MessageBox.Show("Debe de digitar un télefono para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    TxtUsuarioTelefono.Focus();
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(TxtUsuarioContrasennia.Text.Trim())) 
+                {
+                    MessageBox.Show("Debe de digitar una contraseña para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    TxtUsuarioContrasennia.Focus();
+                    return false;
+                }
+
+                if (CbRolesUsuario.SelectedIndex ==-1) 
+                {
+                    MessageBox.Show("Debe de digitar un rol para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    CbRolesUsuario.Focus();
+                    return false;
+                }
+            }
+
+            return r;
+        }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatosDigitados())
+            {
+
+                bool cedulaOk;
+                bool EmailOk;
+
+                MiUsuarioLocal = new Logica.Models.Usuario();
+
+
+                MiUsuarioLocal.UsuarioNombre = TxtUsuarioNombre.Text.Trim();
+                MiUsuarioLocal.UsuarioCedula = TxtUsuarioCedula.Text.Trim();
+                MiUsuarioLocal.UsuarioCorreo = TxtUsuarioCorreo.Text.Trim();
+                MiUsuarioLocal.UsuarioTelefono = TxtUsuarioTelefono.Text.Trim();
+                MiUsuarioLocal.UsuarioContrasennia = TxtUsuarioContrasennia.Text.Trim();
+                MiUsuarioLocal.MiRolTipo.UsuarioRolID = Convert.ToInt32(CbRolesUsuario.SelectedValue);
+                MiUsuarioLocal.UsuarioDireccion = TxtUsuarioDireccion.Text.Trim();
+
+
+                //realizar las consultas por email y cedula
+
+                cedulaOk = MiUsuarioLocal.ConsultarPorCedula();
+
+                EmailOk = MiUsuarioLocal.ConsultarPorEmail();
+
+                if (cedulaOk == false && EmailOk == false)
+                {
+                    //se solicita confirmación que si quiere agregar el usuario
+
+                    string msg = string.Format("¿Está seguro que desea agregar al usuario {0}?", MiUsuarioLocal.UsuarioNombre);
+
+                    DialogResult respuesta = MessageBox.Show(msg, "???", MessageBoxButtons.YesNo);
+
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        bool ok = MiUsuarioLocal.Agregar();
+
+                        if (ok)
+                        {
+                            MessageBox.Show("Usuario guardado correctamente!", ":)", MessageBoxButtons.OK);
+
+                            LimpiarForm();
+
+                            CargarListaDeUsuarios();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario no se pudo guardar correctamente!", ":(", MessageBoxButtons.OK);
+                        }
+
+
+                    }
+
+                }
+                else
+                {
+                    if (cedulaOk)
+                    {
+                        MessageBox.Show("Ya existe un usuario con la cédula digitada", "Error de validación", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                    if (EmailOk)
+                    {
+                        MessageBox.Show("Ya existe un usuario con el correo digitada", "Error de validación", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                }
+
+
+            }
+
+
 
         }
     }
