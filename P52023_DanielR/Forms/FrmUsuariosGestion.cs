@@ -62,7 +62,7 @@ namespace P52023_DanielR.Forms
                 
                 ListaUsuarios = MiUsuarioLocal.ListarActivos(FiltroBusqueda);
             } else {
-                ListaUsuarios = MiUsuarioLocal.ListarInactivos();
+                ListaUsuarios = MiUsuarioLocal.ListarInactivos(FiltroBusqueda);
             }
 
             DtVista.DataSource = ListaUsuarios;

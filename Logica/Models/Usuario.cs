@@ -244,13 +244,14 @@ namespace Logica.Models
             return R;
         }
 
-        public DataTable ListarInactivos()
+        public DataTable ListarInactivos(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
 
             Conexion Micnn = new Conexion();
 
             Micnn.ListaDeParametros.Add(new SqlParameter("@VerActivos", false));
+            Micnn.ListaDeParametros.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
 
             R = Micnn.EjecutarSELECT("SPUsuarioListar");
 
