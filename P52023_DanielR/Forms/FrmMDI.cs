@@ -45,7 +45,18 @@ namespace P52023_DanielR.Forms
             //Mostrar el Usuario loqueado
 
 
-            string InfoUsuario = string.Format("{0}-{1}({2})");
+            //string InfoUsuario = string.Format("{0}-{1}({2})");
+        }
+
+        private void rEGISTRODECOMPRASToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Globales.MiFormRegistroCompra.Visible)
+            {
+                Globales.MiFormRegistroCompra = new FrmRegistroCompra();
+
+                Globales.MiFormRegistroCompra.Show();
+            }
+
         }
     }
 }

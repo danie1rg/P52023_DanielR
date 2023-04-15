@@ -11,5 +11,8 @@ namespace P52023_DanielR
 
         public static Forms.FrmUsuariosGestion MiFormGestionUsuarios = new Forms.FrmUsuariosGestion();
 
+
+        public static Forms.FrmRegistroCompra MiFormRegistroCompra = new Forms.FrmRegistroCompra();   
+
     }
 }

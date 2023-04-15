@@ -17,6 +17,9 @@ namespace P52023_DanielR.Forms
             InitializeComponent();
         }
 
-        
+        private void FrmRegistroCompra_Load(object sender, EventArgs e)
+        {
+            MdiParent = Globales.MiFormPrincipal;
+        }
     }
 }

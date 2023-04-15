@@ -154,6 +154,7 @@
             this.rEGISTRODECOMPRASToolStripMenuItem.Name = "rEGISTRODECOMPRASToolStripMenuItem";
             this.rEGISTRODECOMPRASToolStripMenuItem.Size = new System.Drawing.Size(312, 32);
             this.rEGISTRODECOMPRASToolStripMenuItem.Text = "REGISTRO DE COMPRAS";
+            this.rEGISTRODECOMPRASToolStripMenuItem.Click += new System.EventHandler(this.rEGISTRODECOMPRASToolStripMenuItem_Click);
             // 
             // MnuReportes
             // 
