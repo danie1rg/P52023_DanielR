@@ -58,6 +58,12 @@
     <Compile Include="Forms\FrmMDI.Designer.cs">
       <DependentUpon>FrmMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmRegistroCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRegistroCompra.Designer.cs">
+      <DependentUpon>FrmRegistroCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmUsuariosGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMDI.resx">
       <DependentUpon>FrmMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRegistroCompra.resx">
+      <DependentUpon>FrmRegistroCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUsuariosGestion.resx">
       <DependentUpon>FrmUsuariosGestion.cs</DependentUpon>

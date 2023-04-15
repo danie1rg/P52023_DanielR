@@ -39,5 +39,13 @@ namespace P52023_DanielR.Forms
                 Globales.MiFormGestionUsuarios.Show();
             }
         }
+
+        private void FrmMDI_Load(object sender, EventArgs e)
+        {
+            //Mostrar el Usuario loqueado
+
+
+            string InfoUsuario = string.Format("{0}-{1}({2})");
+        }
     }
 }
