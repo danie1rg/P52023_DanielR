@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FrmCompraAgregarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCompraAgregarProducto.Designer.cs">
+      <DependentUpon>FrmCompraAgregarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,12 @@
     </Compile>
     <Compile Include="Forms\FrmMDI.Designer.cs">
       <DependentUpon>FrmMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmProveedorBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProveedorBuscar.Designer.cs">
+      <DependentUpon>FrmProveedorBuscar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmRegistroCompra.cs">
       <SubType>Form</SubType>
@@ -74,11 +86,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validaciones.cs" />
+    <EmbeddedResource Include="Forms\FrmCompraAgregarProducto.resx">
+      <DependentUpon>FrmCompraAgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMDI.resx">
       <DependentUpon>FrmMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProveedorBuscar.resx">
+      <DependentUpon>FrmProveedorBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmRegistroCompra.resx">
       <DependentUpon>FrmRegistroCompra.cs</DependentUpon>
