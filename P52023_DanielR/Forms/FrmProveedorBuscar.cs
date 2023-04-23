@@ -55,6 +55,24 @@ namespace P52023_DanielR.Forms
             DialogResult= DialogResult.Cancel;
         }
 
-       
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (DgvLista.SelectedRows.Count == 1)
+            {
+
+                DataGridViewRow row = DgvLista.SelectedRows[0];
+
+                int IdProveedor = Convert.ToInt32(row.Cells["CProveedorID"].Value);
+
+                string NombreProveedor = Convert.ToString(row.Cells["CProveedorNombre"].Value);
+
+                
+                Globales.MiFormRegistroCompra.MiCompraLocal.MiProveedor.ProveedorNombre = NombreProveedor;
+                Globales.MiFormRegistroCompra.MiCompraLocal.MiProveedor.ProveedorID = IdProveedor;
+
+                DialogResult = DialogResult.OK;
+
+            }
+        }
     }
 }

@@ -104,6 +104,7 @@
             this.BtnAceptar.TabIndex = 2;
             this.BtnAceptar.Text = "Seleccionar";
             this.BtnAceptar.UseVisualStyleBackColor = false;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // BtnCancelar
             // 

@@ -320,6 +320,7 @@
             this.BtnCompra.TabIndex = 3;
             this.BtnCompra.Text = "Crear Compra";
             this.BtnCompra.UseVisualStyleBackColor = false;
+            this.BtnCompra.Click += new System.EventHandler(this.BtnCompra_Click);
             // 
             // FrmRegistroCompra
             // 

@@ -77,7 +77,7 @@ namespace Logica.Models
             Conexion MiCnn = new Conexion();
 
             MiCnn.ListaDeParametros.Add(new SqlParameter("@VerActivos", verActivos));
-            MiCnn.ListaDeParametros.Add(new SqlParameter("@FiltroBusqueda", verActivos));
+            MiCnn.ListaDeParametros.Add(new SqlParameter("@FiltroBusqueda", FiltroBusqueda));
 
             R = MiCnn.EjecutarSELECT("SPProveedorListar");
 

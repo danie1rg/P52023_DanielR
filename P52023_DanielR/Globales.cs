@@ -12,6 +12,9 @@ namespace P52023_DanielR
         public static Forms.FrmUsuariosGestion MiFormGestionUsuarios = new Forms.FrmUsuariosGestion();
 
 
+        public static Logica.Models.Usuario MiUsuarioGlobal = new Logica.Models.Usuario();
+
+
         public static Forms.FrmRegistroCompra MiFormRegistroCompra = new Forms.FrmRegistroCompra();   
 
     }

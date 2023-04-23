@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica.Services;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace Logica.Models
         {
             DataTable R = new DataTable();
 
-            //código funcional
+            Conexion MiCcn = new Conexion();
+
+            R = MiCcn.EjecutarSELECT("SPTipoCompraListar");
 
             return R;
         }
